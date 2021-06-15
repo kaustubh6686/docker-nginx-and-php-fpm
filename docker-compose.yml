@@ -14,6 +14,17 @@ services:
             sample_app_network:
                 aliases:
                     - web.local
+        links:
+            - php
+
+    php:
+        image: php:fpm
+        hostname: php
+        container_name: php
+        volumes:
+            - ./sample-app:/code
+        networks: 
+            - sample_app_network
 
 networks:
     sample_app_network:

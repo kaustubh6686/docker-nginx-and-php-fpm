@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+    web:
+        image: nginx
+        hostname: web
+        container_name: web
+        domainname: web.local
+        ports:
+            - "80:80"
+        volumes:
+            - ./sample-app:/code
+            - ./site.conf:/etc/nginx/conf.d/site.conf
+        networks:
+            sample_app_network:
+                aliases:
+                    - web.local
+
+networks:
+    sample_app_network:
